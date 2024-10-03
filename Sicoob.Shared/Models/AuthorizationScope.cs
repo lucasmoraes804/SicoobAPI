@@ -199,6 +199,21 @@ public class AuthorizationScope
     /// [API Cobrança] cobranca_boletos_faixa_nn_disponiveis: Permissão ??
     /// </summary>
     public bool COBRANCA_BOLETOS_FAIXA_NN_DISPONIVEIS { get; set; }
+    
+    /// <summary>
+    /// [API Cobrança V3] boletos_inclusao: Permissão ??
+    /// </summary>
+    public bool BOLETOS_INCLUSAO { get; set; }
+    
+    /// <summary>
+    /// [API Cobrança V3] boletos_consulta : Permissão ??
+    /// </summary>
+    public bool BOLETOS_CONSULTA { get; set; }
+    
+    /// <summary>
+    /// [API Cobrança V3] boletos_alteracao : Permissão ??
+    /// </summary>
+    public bool BOLETOS_ALTERACAO { get; set; }
 
 
     /// <summary>
@@ -265,6 +280,11 @@ public class AuthorizationScope
         if (COBRANCA_BOLETOS_ENCARGOS_JUROS_MORA) lst.Add("cobranca_boletos_encargos_juros_mora");
         if (COBRANCA_BOLETOS_PIX) lst.Add("cobranca_boletos_pix");
         if (COBRANCA_BOLETOS_FAIXA_NN_DISPONIVEIS) lst.Add("cobranca_boletos_faixa_nn_disponiveis");
+        
+        /*Api de Cobrança V3*/
+        if (BOLETOS_INCLUSAO) lst.Add("boletos_inclusao");
+        if (BOLETOS_CONSULTA) lst.Add("boletos_consulta");
+        if (BOLETOS_ALTERACAO) lst.Add("boletos_alteracao");
 
         return lst.ToArray();
     }
@@ -351,7 +371,7 @@ public class AuthorizationScope
         return this;
     }
 
-    public AuthorizationScope Cobranca_Setar(bool value)
+    public AuthorizationScope CobrancaV2_Setar(bool value)
     {
         COBRANCA_BOLETOS_CONSULTAR = value;
         COBRANCA_BOLETOS_INCLUIR = value;
@@ -380,6 +400,14 @@ public class AuthorizationScope
         COBRANCA_BOLETOS_ENCARGOS_JUROS_MORA = value;
         COBRANCA_BOLETOS_PIX = value;
         COBRANCA_BOLETOS_FAIXA_NN_DISPONIVEIS = value;
+        return this;
+    }
+    
+    public AuthorizationScope CobrancaV3_Setar(bool value)
+    {
+        BOLETOS_INCLUSAO = value;
+        BOLETOS_CONSULTA = value;
+        BOLETOS_ALTERACAO = value;
         return this;
     }
 
@@ -421,8 +449,12 @@ public class AuthorizationScope
     {
         return new AuthorizationScope().CPoupanca_Setar(true);
     }
-    public static AuthorizationScope TodosCobranca()
+    public static AuthorizationScope TodosCobrancaV2()
     {
-        return new AuthorizationScope().Cobranca_Setar(true);
+        return new AuthorizationScope().CobrancaV2_Setar(true);
+    }
+    public static AuthorizationScope TodosCobrancaV3()
+    {
+        return new AuthorizationScope().CobrancaV3_Setar(true);
     }
 }

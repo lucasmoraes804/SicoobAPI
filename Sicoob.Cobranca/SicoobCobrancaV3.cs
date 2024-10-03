@@ -4,6 +4,7 @@
  *        gh/SharpSistemas/SicoobAPI  *
 \**************************************/
 
+using Sicoob.Cobranca.Models;
 using Sicoob.Cobranca.Models.Shared;
 using Sicoob.Cobranca.Models.v2;
 using Sicoob.Cobranca.Models.v3;
@@ -29,13 +30,13 @@ using System.Threading.Tasks;
 /// <summary>
 /// Classe para comunicação com as APIs de Cobrança do Sicoob
 /// </summary>
-public sealed class SicoobCobrancaV3 : Shared.Sicoob
+public sealed class SicoobCobrancaV3 : Shared.Sicoob, ISicoobCobranca
 {
     // Documentações
     // > APIs tipo "Swagger":
     //   https://developers.sicoob.com.br/#!/apis
     // > Link que o Suporte do Sicoob enviou
-    // https://documenter.getpostman.com/view/20565799/Uzs6yNhe#6447c293-f67b-44ba-b7be-41f5c3de978d
+    // https://documenter.getpostman.com/view/20565799/2sA3QqfsDi#12f19cf7-af18-4777-9bc8-94b8084130f2
 
     private readonly int numeroContrato;
     private ClientInfo clientApi;

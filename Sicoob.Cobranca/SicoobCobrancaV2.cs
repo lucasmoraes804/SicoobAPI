@@ -4,6 +4,7 @@
  *        gh/SharpSistemas/SicoobAPI  *
 \**************************************/
 
+using Sicoob.Cobranca.Models;
 using Sicoob.Cobranca.Models.Shared;
 using Sicoob.Cobranca.Models.v2;
 using Sicoob.Shared.Models;
@@ -23,7 +24,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// Classe para comunicação com as APIs de Cobrança do Sicoob
 /// </summary>
-public sealed class SicoobCobrancaV2 : Shared.Sicoob
+public sealed class SicoobCobrancaV2 : Shared.Sicoob, ISicoobCobranca
 {
     // Documentações
     // > APIs tipo "Swagger":
