@@ -6,7 +6,7 @@ namespace Sicoob.Cobranca.Models.v3;
 
 public class IncluirBoletoRequest
 {
-    public long numeroCliente { get; set; }
+    public long numeroCliente { get;  set; }
     public int codigoModalidade { get; set; }
     public int numeroContaCorrente { get; set; }
     public string codigoEspecieDocumento { get; set; } = "DM"; // Duplicata Mercantil, ver lista
