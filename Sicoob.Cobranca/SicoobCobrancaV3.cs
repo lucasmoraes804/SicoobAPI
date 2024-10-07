@@ -144,7 +144,7 @@ public sealed class SicoobCobrancaV3 : Shared.Sicoob, ISicoobCobranca
             numeroCliente = numeroContrato,
             codigoModalidade = codigoModalidade
         };
-        await ExecutaChamadaAsync(() => clientApi.PatchAsync(ConfigApi.UrlApi + $"cobranca-bancaria/v3/boletos/{nossoNumero}/baixar", baixa));
+        await ExecutaChamadaAsync(() => clientApi.PostAsync(ConfigApi.UrlApi + $"cobranca-bancaria/v3/boletos/{nossoNumero}/baixar", baixa));
     }
     
     public async Task ProtestarBoletos(int nossoNumero, int codigoModalidade)
