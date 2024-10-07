@@ -157,9 +157,11 @@ public sealed class SicoobCobrancaV3 : Shared.Sicoob, ISicoobCobranca
         await ExecutaChamadaAsync(() => clientApi.PostAsync(ConfigApi.UrlApi + $"cobranca-bancaria/v3/boletos/{nossoNumero}/protestos", protesto));
     }
     
-    public async Task AlterarBoleto(int nossoNumero, AlterarBoletoRequest boletos)
+    public async Task AlterarBoleto(int nossoNumero, AlterarBoletoRequest boleto)
     {
-        await ExecutaChamadaAsync(() => clientApi.PatchAsync(ConfigApi.UrlApi + "cobranca-bancaria/v3/boletos/" + nossoNumero, boletos));
+        if (boleto.numeroCliente == 0)
+            boleto.numeroCliente = numeroContrato; 
+        await ExecutaChamadaAsync(() => clientApi.PatchAsync(ConfigApi.UrlApi + "cobranca-bancaria/v3/boletos/" + nossoNumero, boleto));
     }
 
     /* Movimentação */
