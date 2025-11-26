@@ -72,6 +72,14 @@ public class AuthorizationScope
     /// </summary>
     public bool CCO_EXTRATO { get; set; }
     /// <summary>
+    /// [API Conta Corrente v4] Transações da Conta Corrente V4
+    /// </summary>
+    public bool CCO_TRANSFERENCIAS { get; set; }
+    /// <summary>
+    /// [API Conta Corrente v4] Consulta extratos
+    /// </summary>
+    public bool CCO_CONSULTA { get; set; }
+    /// <summary>
     /// [API Conta Corrente] cco_saldo: Acessa dados do Saldo
     /// </summary>
     public bool CCO_SALDO { get; set; }
@@ -246,6 +254,11 @@ public class AuthorizationScope
         if (OPENID) lst.Add("openid");
         if (CCO_EXTRATO) lst.Add("cco_extrato");
         if (CCO_SALDO) lst.Add("cco_saldo");
+        
+        /* API Conta Corrente V4 */
+        if (CCO_TRANSFERENCIAS) lst.Add("cco_transferencias");
+        if (CCO_CONSULTA) lst.Add("cco_consulta");
+        if (OPENID) lst.Add("openid");
 
         /* API Poupança */
         if (POUPANCA_CONTAS) lst.Add("poupanca_contas");
@@ -356,13 +369,22 @@ public class AuthorizationScope
         return this;
     }
 
-    public AuthorizationScope CCorrente_Setar(bool valor)
+    public AuthorizationScope CCorrenteV2_Setar(bool valor)
     {
         OPENID = valor;
         CCO_EXTRATO = valor;
         CCO_SALDO = valor;
         return this;
     }
+    
+    public AuthorizationScope CCorrenteV4_Setar(bool valor)
+    {
+        CCO_TRANSFERENCIAS = valor;
+        CCO_CONSULTA = valor;
+        OPENID = valor;
+        return this;
+    }
+    
     public AuthorizationScope CPoupanca_Setar(bool valor)
     {
         POUPANCA_CONTAS = valor;
@@ -443,7 +465,7 @@ public class AuthorizationScope
     }
     public static AuthorizationScope TodosContaCorrente()
     {
-        return new AuthorizationScope().CCorrente_Setar(true);
+        return new AuthorizationScope().CCorrenteV2_Setar(true);
     }
     public static AuthorizationScope TodosContaPoupanca()
     {

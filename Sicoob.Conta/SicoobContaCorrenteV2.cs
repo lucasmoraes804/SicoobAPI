@@ -11,7 +11,7 @@ using Simple.API;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-public sealed class SicoobContaCorrente : Shared.Sicoob
+public sealed class SicoobContaCorrenteV2 : Shared.Sicoob
 {
     // Documentações
     // > APIs tipo "Swagger":
@@ -22,7 +22,7 @@ public sealed class SicoobContaCorrente : Shared.Sicoob
 
     public Shared.Models.ConfiguracaoAPI ConfigApi { get; }
 
-    public SicoobContaCorrente(Shared.Models.ConfiguracaoAPI configApi, int NumeroContaCorrente, System.Security.Cryptography.X509Certificates.X509Certificate2? certificado = null)
+    public SicoobContaCorrenteV2(Shared.Models.ConfiguracaoAPI configApi, int NumeroContaCorrente, System.Security.Cryptography.X509Certificates.X509Certificate2? certificado = null)
         : base(configApi, certificado)
     {
         ConfigApi = configApi;
