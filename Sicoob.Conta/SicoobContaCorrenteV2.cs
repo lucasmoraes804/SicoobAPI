@@ -50,8 +50,8 @@ public sealed class SicoobContaCorrenteV2 : Shared.Sicoob
     /// <summary>
     /// O recurso de Saldo retorna o valor disponível atual e o limite de crédito (cheque especial) de uma conta corrente.
     /// </summary>
-    public async Task<ResultadoResponse<SaldoResponse>> ObterSaldoAsync()
-        => await ExecutaChamadaAsync(() => clientApi.GetAsync<ResultadoResponse<SaldoResponse>>("/conta-corrente/v2/saldo", new { numeroContaCorrente }));
+    public async Task<ResultadoResponse<SaldoResponseBase>> ObterSaldoAsync()
+        => await ExecutaChamadaAsync(() => clientApi.GetAsync<ResultadoResponse<SaldoResponseBase>>("/conta-corrente/v2/saldo", new { numeroContaCorrente }));
     
 
     /// <summary>
