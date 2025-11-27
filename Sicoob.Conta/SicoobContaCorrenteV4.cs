@@ -67,7 +67,7 @@ public class SicoobContaCorrenteV4 : Shared.Sicoob
     /// O recurso de Extrato retorna todas as transações ocorridas em uma conta corrente no devido mês e ano.
     /// Há um limite de 3 meses
     /// </summary>
-    public async Task<ResultadoResponse<ExtratoResponse>> ObterExtratoAsync(int mes, int ano)
-        => await ExecutaChamadaAsync(() => clientApi.GetAsync<ResultadoResponse<ExtratoResponse>>($"/conta-corrente/v4/extrato/{mes}/{ano}", new { numeroContaCorrente }));
+    public async Task<ResultadoResponse<ExtratoResponse>> ObterExtratoAsync(int mes, int ano, int? diaInicial = null, int? diaFinal = null)
+        => await ExecutaChamadaAsync(() => clientApi.GetAsync<ResultadoResponse<ExtratoResponse>>($"/conta-corrente/v4/extrato/{mes}/{ano}", new { numeroContaCorrente, diaInicial, diaFinal }));
 
 }
