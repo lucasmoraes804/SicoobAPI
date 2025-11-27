@@ -3,6 +3,10 @@
  * Autor: Rafael Estevam              *
  *        gh/SharpSistemas/SicoobAPI  *
 \**************************************/
+
+using Sicoob.Conta.Models.Shared;
+using Sicoob.Conta.Models.v2;
+
 namespace Sicoob.Conta;
 
 using Sicoob.Conta.Models;
