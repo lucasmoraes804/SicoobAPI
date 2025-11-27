@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Sicoob.Conta.Models;
 using Sicoob.Conta.Models.Shared;
-using Sicoob.Conta.Models.v2;
+using Sicoob.Conta.Models.v4;
 using Sicoob.Shared.Models;
 using Sicoob.Shared.Models.Acesso;
 using Simple.API;
