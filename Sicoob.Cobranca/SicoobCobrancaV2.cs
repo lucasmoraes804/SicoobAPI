@@ -3,14 +3,11 @@
  * Autor: Rafael Estevam              *
  *        gh/SharpSistemas/SicoobAPI  *
 \**************************************/
+namespace Sicoob.Cobranca;
 
 using Sicoob.Cobranca.Models;
 using Sicoob.Cobranca.Models.Shared;
 using Sicoob.Cobranca.Models.v2;
-using Sicoob.Shared.Models;
-
-namespace Sicoob.Cobranca;
-
 using Sicoob.Shared.Models.Acesso;
 using Sicoob.Shared.Models.Geral;
 using Simple.API;
@@ -36,7 +33,7 @@ public sealed class SicoobCobrancaV2 : Shared.Sicoob, ISicoobCobranca
     private ClientInfo clientApi;
     public Shared.Models.ConfiguracaoAPI ConfigApi { get; }
     public string? PastaCopiaMovimentacoes { get; set; }
-    public delegate void UpdateToken(ConfiguracaoToken token);
+    public delegate void UpdateToken(Shared.Models.ConfiguracaoToken token);
     public event UpdateToken UpdateTokenEvent;
 
     public SicoobCobrancaV2(Shared.Models.ConfiguracaoAPI configApi, int NumeroContrato, System.Security.Cryptography.X509Certificates.X509Certificate2? certificado = null)
@@ -57,7 +54,7 @@ public sealed class SicoobCobrancaV2 : Shared.Sicoob, ISicoobCobranca
     }
     protected override void atualizaClients(TokenResponse token)
     {
-        ConfigApi.Token = new ConfiguracaoToken()
+        ConfigApi.Token = new Shared.Models.ConfiguracaoToken()
         {
             ExpiresAtUTC = DateTime.UtcNow.AddSeconds(token.expires_in),
             Token = token.access_token
