@@ -62,6 +62,19 @@ public class AuthorizationScope
     /// </summary>
     public bool PAYLOAD_LOCATION_READ { get; set; }
 
+    /// <summary>
+    /// [API PIX Pagamentos] pixpagamentos_escrita: Permissao para iniciar/confirmar pagamentos Pix
+    /// </summary>
+    public bool PIX_PAGAMENTOS_ESCRITA { get; set; }
+    /// <summary>
+    /// [API PIX Pagamentos] pixpagamentos_webhook: Permissao para configurar webhook de pagamentos Pix
+    /// </summary>
+    public bool PIX_PAGAMENTOS_WEBHOOK { get; set; }
+    /// <summary>
+    /// [API PIX Pagamentos] pixpagamentos_consulta: Permissao para consulta de pagamentos Pix
+    /// </summary>
+    public bool PIX_PAGAMENTOS_CONSULTA { get; set; }
+
     /* API Conta Corrente */
     /// <summary>
     /// [API Conta Corrente] openid: Escopo de acesso para Logon para Conta Corrente
@@ -250,6 +263,10 @@ public class AuthorizationScope
         if (PAYLOAD_LOCATION_WRITE) lst.Add("payloadlocation.write");
         if (PAYLOAD_LOCATION_READ) lst.Add("payloadlocation.read");
 
+        if (PIX_PAGAMENTOS_ESCRITA) lst.Add("pixpagamentos_escrita");
+        if (PIX_PAGAMENTOS_WEBHOOK) lst.Add("pixpagamentos_webhook");
+        if (PIX_PAGAMENTOS_CONSULTA) lst.Add("pixpagamentos_consulta");
+
         /* API Conta Corrente */
         if (OPENID) lst.Add("openid");
         if (CCO_EXTRATO) lst.Add("cco_extrato");
@@ -344,6 +361,13 @@ public class AuthorizationScope
     {
         PAYLOAD_LOCATION_READ = valor;
         PAYLOAD_LOCATION_WRITE = valor;
+        return this;
+    }
+    public AuthorizationScope PIX_SetarPagamentos(bool valor)
+    {
+        PIX_PAGAMENTOS_ESCRITA = valor;
+        PIX_PAGAMENTOS_WEBHOOK = valor;
+        PIX_PAGAMENTOS_CONSULTA = valor;
         return this;
     }
 
@@ -466,6 +490,10 @@ public class AuthorizationScope
     public static AuthorizationScope TodosContaCorrente()
     {
         return new AuthorizationScope().CCorrenteV2_Setar(true);
+    }
+    public static AuthorizationScope TodosContaCorrenteV4()
+    {
+        return new AuthorizationScope().CCorrenteV4_Setar(true);
     }
     public static AuthorizationScope TodosContaPoupanca()
     {
