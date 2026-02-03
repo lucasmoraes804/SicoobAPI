@@ -1,7 +1,7 @@
 /**************************************\
- * Biblioteca C# para APIs do SICOOB  *
- * Autor: Rafael Estevam              *
- *        gh/SharpSistemas/SicoobAPI  *
+ * Biblioteca C# para APIs do SICOOB    *
+ * Autor:Lucas Moraes                   *
+ * github.com/lucasmoraes804/SicoobAPI  *
 \**************************************/
 namespace Sicoob.PIX;
 
@@ -67,7 +67,7 @@ public sealed class SicoobPIXPagamento : Sicoob
         }
         if (string.IsNullOrWhiteSpace(pagamento.Chave))
         {
-            throw new ArgumentException($"'{nameof(pagamento.Chave)}' cannot be null or empty.", nameof(pagamento));
+            throw new ArgumentException($"'{nameof(pagamento.Chave)}' não pode ser null ou vazio.", nameof(pagamento));
         }
 
         return await ExecutaChamadaAsyncPIXPagamento(() => clientApi.PostAsync<IniciarPagamentoResponse>("/pix-pagamentos/v2/pagamentos", pagamento));
@@ -84,12 +84,12 @@ public sealed class SicoobPIXPagamento : Sicoob
         }
         if (string.IsNullOrWhiteSpace(pagamento.EndToEndId))
         {
-            throw new ArgumentException($"'{nameof(pagamento.EndToEndId)}' cannot be null or empty.", nameof(pagamento));
+            throw new ArgumentException($"'{nameof(pagamento.EndToEndId)}' não pode ser null ou vazio.", nameof(pagamento));
         }
         validaEndToEndId(pagamento.EndToEndId);
         if (string.IsNullOrWhiteSpace(pagamento.Valor))
         {
-            throw new ArgumentException($"'{nameof(pagamento.Valor)}' cannot be null or empty.", nameof(pagamento));
+            throw new ArgumentException($"'{nameof(pagamento.Valor)}' não pode ser null ou vazio.", nameof(pagamento));
         }
 
         return await ExecutaChamadaAsyncPIXPagamento(() => clientApi.PostAsync<PixPagamento>("/pix-pagamentos/v2/pagamentos/confirmacao", pagamento));
@@ -102,7 +102,7 @@ public sealed class SicoobPIXPagamento : Sicoob
     {
         if (string.IsNullOrWhiteSpace(url))
         {
-            throw new ArgumentException($"'{nameof(url)}' cannot be null or empty.", nameof(url));
+            throw new ArgumentException($"'{nameof(url)}' não pode ser null ou vazio.", nameof(url));
         }
 
         await ExecutaChamadaAsyncPIXPagamento(() => clientApi.PutAsync("/pix-pagamentos/v2/pagamentos/webhook", new WebhookPagamentoRequest { WebhookUrl = url }));
@@ -122,11 +122,11 @@ public sealed class SicoobPIXPagamento : Sicoob
     {
         if (string.IsNullOrEmpty(endToEndId))
         {
-            throw new ArgumentException($"'{nameof(endToEndId)}' cannot be null or empty.", nameof(endToEndId));
+            throw new ArgumentException($"'{nameof(endToEndId)}' não pode ser null ou vazio.", nameof(endToEndId));
         }
         if (!CS.BCB.PIX.Validadores.ValidacaoIdentificadores.ValidaIdE2E(endToEndId))
         {
-            throw new ArgumentException($"'{nameof(endToEndId)}' Nao e valido na restricao", nameof(endToEndId));
+            throw new ArgumentException($"'{nameof(endToEndId)}' não é válido", nameof(endToEndId));
         }
     }
 
