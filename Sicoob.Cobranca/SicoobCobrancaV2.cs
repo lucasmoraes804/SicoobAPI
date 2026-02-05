@@ -3,6 +3,9 @@
  * Autor: Rafael Estevam              *
  *        gh/SharpSistemas/SicoobAPI  *
 \**************************************/
+
+using Sicoob.Shared.Models;
+
 namespace Sicoob.Cobranca;
 
 using Sicoob.Cobranca.Models;
@@ -33,8 +36,7 @@ public sealed class SicoobCobrancaV2 : Shared.Sicoob, ISicoobCobranca
     private ClientInfo clientApi;
     public Shared.Models.ConfiguracaoAPI ConfigApi { get; }
     public string? PastaCopiaMovimentacoes { get; set; }
-    public delegate void UpdateToken(Shared.Models.ConfiguracaoToken token);
-    public event UpdateToken UpdateTokenEvent;
+    public event Action<ConfiguracaoToken>? UpdateTokenEvent;
 
     public SicoobCobrancaV2(Shared.Models.ConfiguracaoAPI configApi, int NumeroContrato, System.Security.Cryptography.X509Certificates.X509Certificate2? certificado = null)
        : base(configApi, certificado)

@@ -34,8 +34,7 @@ public sealed class SicoobCobrancaV3 : Shared.Sicoob, ISicoobCobranca
     private ClientInfo clientApi;
     private ConfiguracaoAPI ConfigApi { get; }
     public string? PastaCopiaMovimentacoes { get; set; }
-    public delegate void UpdateToken(ConfiguracaoToken token);
-    public event UpdateToken? UpdateTokenEvent;
+    public event Action<ConfiguracaoToken>? UpdateTokenEvent;
 
     public SicoobCobrancaV3(ConfiguracaoAPI configApi, int nroContrato, System.Security.Cryptography.X509Certificates.X509Certificate2? certificado = null)
        : base(configApi, certificado)
