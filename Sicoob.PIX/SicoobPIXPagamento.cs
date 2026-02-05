@@ -3,6 +3,9 @@
  * Autor:Lucas Moraes                   *
  * github.com/lucasmoraes804/SicoobAPI  *
 \**************************************/
+
+using Sicoob.Shared.Models;
+
 namespace Sicoob.PIX;
 
 using Sicoob.PIX.Models;
@@ -26,6 +29,7 @@ public sealed class SicoobPIXPagamento : Sicoob
 
     private ClientInfo clientApi;
     public Shared.Models.ConfiguracaoAPI ConfigApi { get; }
+    public event Action<ConfiguracaoToken>? UpdateTokenEvent;
 
     public SicoobPIXPagamento(Shared.Models.ConfiguracaoAPI configApi, System.Security.Cryptography.X509Certificates.X509Certificate2? certificado = null)
         : base(configApi, certificado)
@@ -37,6 +41,9 @@ public sealed class SicoobPIXPagamento : Sicoob
     {
         clientApi = new ClientInfo(ConfigApi.UrlApi, handler);
         clientApi.SetHeader("client_id", ConfigApi.ClientId);
+        
+        if (ConfigApi.Token is not null)
+            clientApi.SetAuthorizationBearer(ConfigApi.Token.Token);
 
 #if DEBUG
         enableDebug(clientApi);
@@ -44,6 +51,15 @@ public sealed class SicoobPIXPagamento : Sicoob
     }
     protected override void atualizaClients(TokenResponse token)
     {
+        ConfigApi.Token = new Shared.Models.ConfiguracaoToken()
+        {
+            ExpiresAtUTC = DateTime.UtcNow.AddSeconds(token.expires_in),
+            Token = token.access_token
+        };
+        //Notificar quando o token foi atualizado
+        if (UpdateTokenEvent is not null)
+            UpdateTokenEvent(ConfigApi.Token);
+        
         clientApi.SetAuthorizationBearer(token.access_token);
     }
 

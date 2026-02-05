@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Sicoob.Shared.Models;
 
 namespace Sicoob.Cobranca.Models;
