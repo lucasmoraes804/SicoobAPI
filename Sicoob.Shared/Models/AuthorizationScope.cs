@@ -485,7 +485,7 @@ public class AuthorizationScope
     }
     public static AuthorizationScope TodosPIX()
     {
-        return new AuthorizationScope().PIX_Setar_Read(true).PIX_Setar_Write(true);
+        return new AuthorizationScope().PIX_Setar_Read(true).PIX_Setar_Write(true).PIX_SetarPagamentos(true);
     }
     public static AuthorizationScope TodosContaCorrente()
     {

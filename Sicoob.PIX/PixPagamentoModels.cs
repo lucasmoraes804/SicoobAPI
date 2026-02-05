@@ -3,6 +3,9 @@
  * Autor: Rafael Estevam              *
  *        gh/SharpSistemas/SicoobAPI  *
 \**************************************/
+
+using Newtonsoft.Json;
+
 namespace Sicoob.PIX.Models;
 
 using System;
@@ -67,6 +70,7 @@ public class ParticipantePixPagamento
 
 public class WebhookPagamentoRequest
 {
+    [JsonProperty("webhookUrl")]
     public string? WebhookUrl { get; set; }
 }
 
