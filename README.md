@@ -1,4 +1,6 @@
-# [![.NET](https://github.com/SharpSistemas/SicoobAPI/actions/workflows/dotnet.yml/badge.svg)](https://github.com/SharpSistemas/SicoobAPI) APIs Sicoob 
+ [![.NET](https://github.com/SharpSistemas/SicoobAPI/actions/workflows/dotnet.yml/badge.svg)](https://github.com/SharpSistemas/SicoobAPI) [![NuGet - Cobrança](https://img.shields.io/nuget/v/OpenFinance.Sicoob.Cobranca.svg?label=OpenFinance.Sicoob.Cobranca)](https://www.nuget.org/packages/OpenFinance.Sicoob.Cobranca/) [![NuGet - Conta](https://img.shields.io/nuget/v/OpenFinance.Sicoob.Conta.svg?label=OpenFinance.Sicoob.Conta)](https://www.nuget.org/packages/OpenFinance.Sicoob.Conta/) [![NuGet - PIX](https://img.shields.io/nuget/v/OpenFinance.Sicoob.PIX.svg?label=OpenFinance.Sicoob.PIX)](https://www.nuget.org/packages/OpenFinance.Sicoob.PIX/) 
+ # APIs Sicoob 
+
 
 - [ APIs Sicoob](#-apis-sicoob)
 - [Sicoob.PIX](#sicoobpix)
