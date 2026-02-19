@@ -138,10 +138,14 @@ public abstract class Sicoob
 
         if (!response.IsSuccessStatusCode)
         {
-            if (response.TryParseErrorResponseData(out ErroRequisicao err))
+            if (response.TryParseErrorResponseData(out ErroRequisicaoMensagens err))
             {
-                throw new ErroRequisicaoException(err);
+                if (err.mensagens?.Length > 0)
+                    throw new ErroRequisicaoException(err);
             }
+            
+            if (response.TryParseErrorResponseData(out ErroRequisicaoErrors erro))
+                throw new ErroRequisicaoException(erro);
         }
         response.EnsureSuccessStatusCode();
 
@@ -154,7 +158,7 @@ public abstract class Sicoob
 
         // Processa manualmente para não envelopar demais
         if (response.IsSuccessStatusCode) return;
-        if (response.TryParseErrorResponseData(out ErroRequisicao err))
+        if (response.TryParseErrorResponseData(out ErroRequisicaoMensagens err))
         {
             throw new ErroRequisicaoException(err);
         }

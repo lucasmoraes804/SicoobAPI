@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
+		<PackageId>OpenFinance.Sicoob.Conta</PackageId>
 		<LangVersion>12.0</LangVersion>
 		<Nullable>warnings</Nullable>
 		<ImplicitUsings>disable</ImplicitUsings>

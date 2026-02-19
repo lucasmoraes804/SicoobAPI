@@ -168,7 +168,7 @@ public sealed class SicoobCobrancaV2 : Shared.Sicoob, ISicoobCobranca
         if (result.IsSuccessStatusCode) return result.Data.resultado;
 
         // "{\"mensagens\":[{\"mensagem\":\"Solicitação ainda em processamento.\",\"codigo\":\"5004\"}]}"
-        if (result.TryParseErrorResponseData(out ErroRequisicao err))
+        if (result.TryParseErrorResponseData(out ErroRequisicaoMensagens err))
         {
             if (err.mensagens == null) { }
             
