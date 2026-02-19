@@ -12,13 +12,13 @@
 		<Product>Sicoob Cobrança for C#</Product>
 		<Description>C# implementation for Billing with SICOOB</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/SharpSistemas/SicoobAPI</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/SharpSistemas/SicoobAPI</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/lucasmoraes804/SicoobAPI</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/lucasmoraes804/SicoobAPI</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>Simple API client</PackageTags>
 		<PackageReleaseNotes>
 			See examples and documentation on the GitHub page
-			https://github.com/SharpSistemas/SicoobAPI
+			https://github.com/lucasmoraes804/SicoobAPI
 		</PackageReleaseNotes>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
