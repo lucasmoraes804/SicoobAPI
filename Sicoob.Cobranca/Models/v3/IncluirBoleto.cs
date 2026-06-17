@@ -46,6 +46,7 @@ public class IncluirBoletoRequest
     public decimal valorMulta { get; set; }
     public int tipoJurosMora { get; set; }
     [JsonConverter(typeof(CustomDateTimeConverter))]
+    [JsonProperty(NullValueHandling=NullValueHandling.Ignore)]
     public DateTime dataJurosMora { get; set; }
     public decimal valorJurosMora { get; set; }
     public int numeroParcela { get; set; }
